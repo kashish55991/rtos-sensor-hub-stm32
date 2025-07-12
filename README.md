@@ -9,15 +9,21 @@ This project implements a real-time environmental sensor hub using FreeRTOS on S
 - Modular Sensor Drivers
 - Python Logger Script Included
 
-## Task Architecture
-![Architecture](docs/architecture.png)
+## Architecture
+- **SensorTask**: Reads from BME280 and LIS2DW12 every 1s
+- **UART**: Sends data to host via `printf()`
 
-## Hardware
-- STM32WLE55 (any STM32 board works)
-- BME280 + LIS2DW12 via I2C/SPI
+## Getting Started
+1. Open project in STM32CubeIDE or IAR
+2. Connect sensors via I2C or SPI (or simulate)
+3. Build and flash to STM32 board
+4. Open terminal (115200 baud) or run `uart_logger.py`
 
-## Directory Structure
-- `src/` – Source code
-- `inc/` – Headers
-- `docs/` – Architecture, timing diagrams
-- `Scripts/` – Python UART logger
+## Python UART Logger
+```bash
+cd Scripts
+python uart_logger.py
+```
+
+## License
+MIT
