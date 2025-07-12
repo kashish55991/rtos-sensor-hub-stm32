@@ -1,1 +1,3 @@
-C:/Kashish/Projects/RTOS Sensor Hub/rtos-sensor-hub-stm32/RTOS_SensorHub_STM32/Core/Src/freertos.c:62:6:vApplicationGetIdleTaskMemory	1
+C:/Kashish/Projects/RTOS Sensor Hub/rtos-sensor-hub-stm32/RTOS_SensorHub_STM32/Core/Src/freertos.c:68:6:vApplicationGetIdleTaskMemory	1
+C:/Kashish/Projects/RTOS Sensor Hub/rtos-sensor-hub-stm32/RTOS_SensorHub_STM32/Core/Src/freertos.c:82:6:MX_FREERTOS_Init	1
+C:/Kashish/Projects/RTOS Sensor Hub/rtos-sensor-hub-stm32/RTOS_SensorHub_STM32/Core/Src/freertos.c:121:6:StartDefaultTask	1

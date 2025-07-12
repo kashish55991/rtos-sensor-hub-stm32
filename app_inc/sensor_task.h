@@ -1,7 +1,18 @@
 #ifndef SENSOR_TASK_H
 #define SENSOR_TASK_H
 
-void SensorTask_Init(void);
-void SensorTask_Loop(void);
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#endif // SENSOR_TASK_H
+
+#include "retarget.h"
+
+void SensorTask(void const * argument);
+void Sensor_Init(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* SENSOR_TASK_H */

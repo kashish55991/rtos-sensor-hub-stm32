@@ -55,6 +55,12 @@ default.size.stdout \
 OBJDUMP_LIST += \
 RTOS_SensorHub_STM32.list \
 
+OBJCOPY_HEX += \
+RTOS_SensorHub_STM32.hex \
+
+OBJCOPY_BIN += \
+RTOS_SensorHub_STM32.bin \
+
 
 # All Target
 all: main-build
@@ -78,12 +84,22 @@ RTOS_SensorHub_STM32.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_
 	@echo 'Finished building: $@'
 	@echo ' '
 
+RTOS_SensorHub_STM32.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "RTOS_SensorHub_STM32.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+RTOS_SensorHub_STM32.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "RTOS_SensorHub_STM32.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) RTOS_SensorHub_STM32.elf RTOS_SensorHub_STM32.list RTOS_SensorHub_STM32.map default.size.stdout
+	-$(RM) RTOS_SensorHub_STM32.bin RTOS_SensorHub_STM32.elf RTOS_SensorHub_STM32.hex RTOS_SensorHub_STM32.list RTOS_SensorHub_STM32.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
